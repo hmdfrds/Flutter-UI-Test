@@ -1,6 +1,4 @@
 import 'dart:ui';
-
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_test/T%20Trip%20Travel/widget/CustomClipper.dart';
