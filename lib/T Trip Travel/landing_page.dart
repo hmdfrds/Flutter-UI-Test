@@ -129,7 +129,7 @@ class _LandingPageState extends State<LandingPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       SizedBox(
-                        height: 300,
+                        height: 300.h,
                         child: PageView(
                             onPageChanged: (index) {
                               setState(() {
