@@ -1,11 +1,81 @@
 import 'dart:ui';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_test/T%20Trip%20Travel/widget/CustomClipper.dart';
+import 'package:flutter_ui_test/T%20Trip%20Travel/widget/custom_clipper.dart';
 
-class LandingPage extends StatelessWidget {
+class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
 
+  @override
+  State<LandingPage> createState() => _LandingPageState();
+}
+
+class _LandingPageState extends State<LandingPage> {
+  var page = [
+    Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Explore ",
+              style: TextStyle(fontSize: 35.sp),
+            ),
+            Text(
+              "Beauty",
+              style: TextStyle(fontSize: 35.sp, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+        Text(
+          "of journey",
+          style: TextStyle(fontSize: 35.sp, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 25),
+        SizedBox(
+          width: 300.w,
+          child: Text(
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            style: TextStyle(fontSize: 18.sp),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ],
+    ),
+    Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Explore ",
+              style: TextStyle(fontSize: 35.sp),
+            ),
+            Text(
+              "Beauty",
+              style: TextStyle(fontSize: 35.sp, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+        Text(
+          "of journey",
+          style: TextStyle(fontSize: 35.sp, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 25),
+        SizedBox(
+          width: 300.w,
+          child: Text(
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            style: TextStyle(fontSize: 18.sp),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ],
+    ),
+  ];
+  var currentPage = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,48 +128,33 @@ class LandingPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Explore ",
-                            style: TextStyle(fontSize: 35.sp),
-                          ),
-                          Text(
-                            "Beauty",
-                            style: TextStyle(
-                                fontSize: 35.sp, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        "of journey",
-                        style: TextStyle(
-                            fontSize: 35.sp, fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 25),
                       SizedBox(
-                        width: 300.w,
-                        child: Text(
-                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                          style: TextStyle(fontSize: 18.sp),
-                          textAlign: TextAlign.center,
-                        ),
+                        height: 300,
+                        child: PageView(
+                            onPageChanged: (index) {
+                              setState(() {
+                                currentPage = index;
+                              });
+                            },
+                            physics: const BouncingScrollPhysics(),
+                            children: page),
                       ),
                       SizedBox(height: 30.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            width: 10.w,
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 100),
+                            width: currentPage == 0 ? 30.w : 10.w,
                             height: 5.h,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(100.r)),
                           ),
                           SizedBox(width: 5.w),
-                          Container(
-                            width: 30.w,
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 100),
+                            width: currentPage == 1 ? 30.w : 10.w,
                             height: 5.h,
                             decoration: BoxDecoration(
                                 color: Colors.white,
