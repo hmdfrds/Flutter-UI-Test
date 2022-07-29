@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_ui_test/T%20Trip%20Travel/landing_page.dart';
 import 'package:flutter_ui_test/T%20Trip%20Travel/main_page.dart';
 
 class TTripTravelMain extends StatelessWidget {

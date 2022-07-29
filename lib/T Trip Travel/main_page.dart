@@ -18,11 +18,13 @@ class _MainPageState extends State<MainPage> {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                Row(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 25.h),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ClipRRect(
@@ -50,8 +52,11 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 25.h),
-                Row(
+              ),
+              SizedBox(height: 25.h),
+              Padding(
+                padding: EdgeInsets.only(left: 25.w, right: 25.w),
+                child: Row(
                   children: [
                     Expanded(
                       child: TextField(
@@ -85,8 +90,11 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 15.h),
-                Row(
+              ),
+              SizedBox(height: 15.h),
+              Padding(
+                padding: EdgeInsets.only(left: 25.w, right: 25.w),
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -105,8 +113,13 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 5.h),
-                Row(
+              ),
+              SizedBox(height: 5.h),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: 25.w,
+                ),
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     RotatedBox(
@@ -214,10 +227,13 @@ class _MainPageState extends State<MainPage> {
                         width: 100.w,
                         height: 208.h,
                         child: ListView.separated(
-                            physics: BouncingScrollPhysics(),
+                            physics: const BouncingScrollPhysics(),
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (content, index) {
-                              return PlaceCard();
+                              if (index == 3) {
+                                return SizedBox(width: 15.w);
+                              }
+                              return const PlaceCard();
                             },
                             separatorBuilder: (context, index) {
                               return SizedBox(
@@ -229,8 +245,175 @@ class _MainPageState extends State<MainPage> {
                     )
                   ],
                 ),
-              ],
-            ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 25.w, top: 20.h, bottom: 10.h),
+                child: const Text(
+                  "Discover",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 27),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(10.w),
+                          decoration: BoxDecoration(
+                            color: const Color(0xfff4ad91),
+                            borderRadius: BorderRadius.circular(15.r),
+                          ),
+                          child: Icon(
+                            Icons.shield_sharp,
+                            size: 30.sp,
+                          ),
+                        ),
+                        SizedBox(height: 5.h),
+                        Text(
+                          "ship",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15.sp),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(10.w),
+                          decoration: BoxDecoration(
+                            color: const Color(0xfff4ad91),
+                            borderRadius: BorderRadius.circular(15.r),
+                          ),
+                          child: Icon(
+                            Icons.train,
+                            size: 30.sp,
+                          ),
+                        ),
+                        SizedBox(height: 5.h),
+                        Text(
+                          "Train",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15.sp),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(10.w),
+                          decoration: BoxDecoration(
+                            color: const Color(0xfff4ad91),
+                            borderRadius: BorderRadius.circular(15.r),
+                          ),
+                          child: Icon(
+                            Icons.bus_alert,
+                            size: 30.sp,
+                          ),
+                        ),
+                        SizedBox(height: 5.h),
+                        Text(
+                          "Bus",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15.sp),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 25.w, right: 25.w, top: 25.h),
+                padding: EdgeInsets.all(10.w),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black26),
+                  borderRadius: BorderRadius.circular(20.w),
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(15.w),
+                      decoration: BoxDecoration(
+                        color: const Color(0xfff0cdba),
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: const Icon(
+                        CupertinoIcons.rocket,
+                        color: Color(0xffb96e47),
+                      ),
+                    ),
+                    SizedBox(width: 10.w),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            filled: true,
+                            fillColor: const Color(0xfff0cdba),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(20.r),
+                            ),
+                            suffixIcon: Icon(
+                              CupertinoIcons.chevron_right,
+                              size: 15.sp,
+                              color: const Color(0xffb96e47),
+                            ),
+                            hintStyle: const TextStyle(
+                              color: Color(0xffb96e47),
+                            ),
+                            hintText: "From where"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    top: 15.h, left: 25.w, right: 25.w, bottom: 25.h),
+                padding: EdgeInsets.all(10.w),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black26),
+                  borderRadius: BorderRadius.circular(20.w),
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(15.w),
+                      decoration: BoxDecoration(
+                        color: const Color(0xfff0cdba),
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: const Icon(
+                        CupertinoIcons.up_arrow,
+                        color: Color(0xffb96e47),
+                      ),
+                    ),
+                    SizedBox(width: 10.w),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            filled: true,
+                            fillColor: const Color(0xfff0cdba),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(20.r),
+                            ),
+                            suffixIcon: Icon(
+                              CupertinoIcons.chevron_right,
+                              size: 15.sp,
+                              color: const Color(0xffb96e47),
+                            ),
+                            hintStyle: const TextStyle(
+                              color: Color(0xffb96e47),
+                            ),
+                            hintText: "To"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),
