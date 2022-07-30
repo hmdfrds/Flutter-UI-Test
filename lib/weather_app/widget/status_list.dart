@@ -8,25 +8,23 @@ class StatusList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Row(
-        children: const [
-          StatusCard(
-            status: "60%",
-            statusName: "Rain",
-          ),
-          SizedBox(width: 15),
-          StatusCard(
-            status: "60%",
-            statusName: "Rain",
-          ),
-          SizedBox(width: 15),
-          StatusCard(
-            status: "60%",
-            statusName: "Rain",
-          ),
-        ],
-      ),
+    return Row(
+      children: const [
+        StatusCard(
+          status: "60%",
+          statusName: "Rain",
+        ),
+        SizedBox(width: 15),
+        StatusCard(
+          status: "60%",
+          statusName: "Rain",
+        ),
+        SizedBox(width: 15),
+        StatusCard(
+          status: "60%",
+          statusName: "Rain",
+        ),
+      ],
     );
   }
 }

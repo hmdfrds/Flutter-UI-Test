@@ -18,11 +18,13 @@ class StatusCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           color: const Color(0xff224241),
         ),
+        height: 154,
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
           statusName == "Rain"
               ? Image.asset(
                   "assets/weather_app/small_rainy_cloudy.png",
+                  fit: BoxFit.scaleDown,
                   width: 65,
                 )
               : statusName == "Wind"

@@ -19,14 +19,17 @@ class WeatherAppFirstPage extends StatelessWidget {
           child: Column(
             children: const [
               CustomAppBar(),
-              TodayWeatherCard(
-                date: "Today,16 March",
-                temperature: "30",
-                status: "sunny",
+              Expanded(
+                flex: 3,
+                child: TodayWeatherCard(
+                  date: "Today,16 March",
+                  temperature: "30",
+                  status: "sunny",
+                ),
               ),
               DaysBar(),
               SizedBox(height: 15),
-              StatusList()
+              Expanded(child: StatusList())
             ],
           ),
         ),
