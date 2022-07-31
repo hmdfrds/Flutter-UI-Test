@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_test/weather_app/widget/custom_app_bar.dart';
 import 'package:flutter_ui_test/weather_app/widget/custom_bottom_app_bar.dart';
-import 'package:flutter_ui_test/weather_app/widget/custom_today_weather_card_first_row.dart';
 import 'package:flutter_ui_test/weather_app/widget/custom_today_weather_card.dart';
-import 'package:flutter_ui_test/weather_app/widget/status_list.dart';
 import 'package:flutter_ui_test/weather_app/widget/weather_table.dart';
 
 class WeatherAppSecondPage extends StatelessWidget {
