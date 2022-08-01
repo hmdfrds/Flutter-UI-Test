@@ -51,6 +51,14 @@ class _PageOneState extends State<PageOne> {
   List<Map<String, Object>> habits = [];
   late String choosenStatus;
 
+  addHabit() {
+    showBottomSheet(
+      backgroundColor: const Color(0xfff9f9f9),
+      context: context,
+      builder: (context) => CustomBottomSheet(),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -132,11 +140,225 @@ class _PageOneState extends State<PageOne> {
                   },
                 ),
               ),
-              Expanded(child: HabitList(habits: habits)),
+              Expanded(
+                  child: HabitList(
+                habits: habits,
+                addHabit: addHabit,
+              )),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class CustomBottomSheet extends StatelessWidget {
+  const CustomBottomSheet({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width * 0.2,
+          height: 5,
+          decoration: BoxDecoration(
+              color: Colors.black, borderRadius: BorderRadius.circular(100)),
+        ),
+        const SizedBox(height: 25),
+        Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(35),
+              topRight: Radius.circular(35),
+            ),
+          ),
+          height: MediaQuery.of(context).size.height * 0.83,
+          child: Padding(
+            padding: const EdgeInsets.all(30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: const Color(0xfff1e0e1),
+                          borderRadius: BorderRadius.circular(15)),
+                      child: const Icon(
+                        Icons.close,
+                        color: Colors.red,
+                        size: 30,
+                      ),
+                    ),
+                    const FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "New Habit",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 35),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 50,
+                    ),
+                  ],
+                ),
+                Spacer(
+                  flex: 5,
+                ),
+                const Text(
+                  "How often do you want to do it?",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                ),
+                Spacer(),
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 25),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: const Color(0xffe8ebea),
+                      ),
+                      child: const Text(
+                        "Daily",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 25),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: const Color(0xffe8ebea),
+                      ),
+                      child: const Text(
+                        "Weekly",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ],
+                ),
+                Spacer(),
+                const Divider(
+                  indent: 10,
+                  endIndent: 10,
+                  thickness: 1,
+                ),
+                Spacer(),
+                const Text(
+                  "Every",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                ),
+                Spacer(),
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: const Color(0xfff1e0e1),
+                          borderRadius: BorderRadius.circular(15)),
+                      child: const Icon(
+                        Icons.remove,
+                        color: Colors.black,
+                        size: 30,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    const Text(
+                      "1 week",
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(width: 20),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ),
+                  ],
+                ),
+                Spacer(),
+                const Divider(
+                  indent: 10,
+                  endIndent: 10,
+                  thickness: 1,
+                ),
+                Spacer(),
+                const Text(
+                  "In which time of the day would you like to do it?",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                ),
+                Spacer(),
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 25),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: const Color(0xffe8ebea),
+                      ),
+                      child: const Text(
+                        "☀️ Morning",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 25),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: const Color(0xff19175c),
+                      ),
+                      child: const Text(
+                        "🌙 Night",
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+                Spacer(
+                  flex: 10,
+                ),
+                Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 30),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        gradient: const LinearGradient(colors: [
+                          Color(0xfffff287),
+                          Color(0xfffdd5d1),
+                          Color(0xfff4f6f6),
+                        ])),
+                    child: const Text(
+                      "Create",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    )),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

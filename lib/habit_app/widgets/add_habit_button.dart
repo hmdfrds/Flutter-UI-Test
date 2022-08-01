@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
 class AddHabitButton extends StatelessWidget {
+  final Function addHabit;
   const AddHabitButton({
     Key? key,
+    required this.addHabit,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        addHabit();
+      },
       child: Container(
         padding: const EdgeInsets.all(20),
         width: double.infinity,

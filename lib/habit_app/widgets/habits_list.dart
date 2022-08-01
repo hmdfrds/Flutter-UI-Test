@@ -3,8 +3,9 @@ import 'package:flutter_ui_test/habit_app/widgets/add_habit_button.dart';
 import 'package:flutter_ui_test/habit_app/widgets/habit_card.dart';
 
 class HabitList extends StatelessWidget {
+  final Function addHabit;
   final List<Map<String, Object>> habits;
-  const HabitList({Key? key, required this.habits}) : super(key: key);
+  const HabitList({Key? key, required this.habits, required this.addHabit}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +17,10 @@ class HabitList extends StatelessWidget {
             return const SizedBox(height: 10);
           }
           if (index == habits.length + 1) {
-            return const Padding(
+            return  Padding(
               padding:
-                  EdgeInsets.only(top: 10, left: 25, right: 25, bottom: 200),
-              child: AddHabitButton(),
+                  const EdgeInsets.only(top: 10, left: 25, right: 25, bottom: 200),
+              child: AddHabitButton(addHabit: addHabit),
             );
           }
           return Padding(

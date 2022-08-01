@@ -35,6 +35,7 @@ class _DateListState extends State<DateList> {
           }
           return DateCard(
             onTap: (p0) {
+    
               widget.onDateChanged(p0);
               setState(() {
                 choosenDate = p0.day;
