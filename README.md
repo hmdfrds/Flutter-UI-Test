@@ -1,10 +1,4 @@
-<p>
-    <h1>T Trip Travel</h1>
-    <div style="display: flex; ">
-            <img src="https://github.com/hmdfrds/Flutter-UI-Test/blob/main/lib/T%20Trip%20Travel/landing_page.png" height="500px">
-            <img src="https://github.com/hmdfrds/Flutter-UI-Test/blob/main/lib/T%20Trip%20Travel/main_page.png" height="500px">
-    </div>
-</p>
+#UI TEST
 
 <p>
     <h1>Weather App</h1>
